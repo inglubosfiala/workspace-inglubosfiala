@@ -1350,14 +1350,19 @@ var getGithubUrl = function(callback) {
   var stdout = childproc.execSync(cmd, { encoding: 'utf8' });
   console.log("Got the following Github URL:", stdout);
 
-  var re = /.*github.com:/i;
+  var re = /.*github.com\//i;
+
   var url = stdout.replace(re, "");
+
+console.log("MODIF1:",url);  
   url = url.replace(/.git[\s\S]*$/i, ""); // remove end
+
+console.log("MODIF2:",url);  
   
   // prepend with clean githut url
   url = "http://github.com/" + url;
   
-  var rawurl = url.replace(/.*github.com/i, "/raw.githubusercontent.com/");
+  var rawurl = url.replace(/.*github.com/, "raw.githubusercontent.com");
   rawurl += '/master/' + fileAutoGeneratePath;
   
   var ret = {
