@@ -1357,7 +1357,7 @@ var getGithubUrl = function(callback) {
   // prepend with clean githut url
   url = "http://github.com/" + url;
   
-  var rawurl = url.replace(/\/*github.com\//i, "/raw.githubusercontent.com/");
+  var rawurl = url.replace(/\/github.com\//i, "/raw.githubusercontent.com/");
   rawurl += '/master/' + fileAutoGeneratePath;
   
   var ret = {
